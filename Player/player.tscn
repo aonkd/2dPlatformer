@@ -1,49 +1,49 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmmthhk640b75"]
+[gd_scene load_steps=15 format=3 uid="uid://bvavs5m7m1xmx"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_i3imk"]
-[ext_resource type="Texture2D" uid="uid://ds5adtbc7h1s6" path="res://assets/player.png" id="2_ykxuu"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_2ffdq"]
+[ext_resource type="Texture2D" uid="uid://ds5adtbc7h1s6" path="res://assets/player.png" id="2_43tbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71ats"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(288, 70, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eydav"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(0, 0, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ajxe"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(224, 70, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sdw4"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(256, 70, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ge65e"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(32, 0, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rydt"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(64, 0, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bjj0"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(96, 0, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_el04r"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(128, 0, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mj2t"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(160, 0, 32, 70)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ec6l"]
-atlas = ExtResource("2_ykxuu")
+atlas = ExtResource("2_43tbo")
 region = Rect2(192, 0, 32, 70)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1cj1l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmr0d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -96,33 +96,19 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcbjf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr8sk"]
 size = Vector2(19, 49)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i3xir"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jojk5"]
-size = Vector2(1153, 62)
-
-[node name="Game" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(570, 500)
-script = ExtResource("1_i3imk")
+script = ExtResource("1_2ffdq")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Player"]
-sprite_frames = SubResource("SpriteFrames_1cj1l")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rmr0d")
 animation = &"walk"
-frame = 2
-frame_progress = 0.966226
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 3.5)
-shape = SubResource("RectangleShape2D_kcbjf")
+shape = SubResource("RectangleShape2D_jr8sk")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_i3xir")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.5, 615)
-shape = SubResource("RectangleShape2D_jojk5")
+[node name="Camera2D" type="Camera2D" parent="."]
