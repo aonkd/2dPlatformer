@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvavs5m7m1xmx"]
+[gd_scene load_steps=16 format=3 uid="uid://bvavs5m7m1xmx"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_2ffdq"]
 [ext_resource type="Texture2D" uid="uid://ds5adtbc7h1s6" path="res://assets/player.png" id="2_43tbo"]
@@ -99,6 +99,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr8sk"]
 size = Vector2(19, 49)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76dd4"]
+size = Vector2(21, 49)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(570, 500)
 script = ExtResource("1_2ffdq")
@@ -112,3 +115,11 @@ position = Vector2(1.5, 3.5)
 shape = SubResource("RectangleShape2D_jr8sk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_area"]
+position = Vector2(1.5, 3.5)
+shape = SubResource("RectangleShape2D_76dd4")
+
+[connection signal="body_entered" from="Player_area" to="." method="_on_player_area_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fi1ig1l6eorg"]
+[gd_scene load_steps=15 format=3 uid="uid://fi1ig1l6eorg"]
 
 [ext_resource type="Texture2D" uid="uid://b4q4ev77u1yrj" path="res://assets/portal_start.png" id="1_1owur"]
 [ext_resource type="Script" path="res://Levels/Spawn.gd" id="2_ww7ng"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dt7ri4fpp2kww" path="res://assets/portal_end.png" id="4_xisx8"]
 [ext_resource type="Script" path="res://Player_container.gd" id="5_41hdh"]
 [ext_resource type="Texture2D" uid="uid://ci4e0bg53gikm" path="res://assets/Tiles copy.png" id="6_m7sal"]
+[ext_resource type="PackedScene" uid="uid://4ferqnwjvvkr" path="res://Enemy/Red_slime.tscn" id="6_rdfdo"]
+[ext_resource type="PackedScene" uid="uid://dwx1h53o2lkra" path="res://Enemy/Blue_slime.tscn" id="7_53pn8"]
+[ext_resource type="Script" path="res://Levels/Killbox.gd" id="7_suuy6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riw1p"]
 texture = ExtResource("6_m7sal")
@@ -737,6 +740,15 @@ texture_region_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_riw1p")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3tli"]
+size = Vector2(3533, 209)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25cet"]
+size = Vector2(23, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m736"]
+size = Vector2(20, 63)
+
 [node name="Game" type="Node2D"]
 
 [node name="Spawn" type="Node2D" parent="."]
@@ -760,7 +772,58 @@ polygon = PackedVector2Array(2354, 403, 2334, 416, 2329, 451, 2334, 490, 2351, 5
 [node name="Player_container" type="Node2D" parent="."]
 script = ExtResource("5_41hdh")
 
+[node name="Enemy_container" type="Node2D" parent="."]
+
+[node name="Red_slime" parent="Enemy_container" instance=ExtResource("6_rdfdo")]
+position = Vector2(931, 661)
+
+[node name="Blue_slime" parent="Enemy_container" instance=ExtResource("7_53pn8")]
+position = Vector2(1942, 330)
+
 [node name="Platform" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_detl5")
 format = 2
 layer_0/tile_data = PackedInt32Array(327702, 1048576, 6, 393238, 1048576, 6, 458774, 1048576, 6, 524310, 1048576, 6, 589846, 1048576, 6, 655382, 1048576, 6, 720918, 1048576, 6, 786454, 1048576, 6, 851990, 1048576, 6, 917526, 1048576, 6, 983062, 1048576, 6, 1048598, 1048576, 6, 1114134, 1048576, 6, 1179670, 1048576, 6, 1245206, 1048576, 6, 1310742, 1048576, 6, 1376278, 1048576, 6, 1376277, 1048576, 6, 1376276, 1048576, 6, 1376275, 1048576, 6, 1376274, 1048576, 6, 1376273, 1048576, 6, 1376272, 1048576, 6, 1376271, 1048576, 6, 1376270, 1048576, 6, 1376269, 1048576, 6, 1376268, 1048576, 6, 1376267, 1048576, 6, 1376266, 1048576, 6, 1376265, 1048576, 6, 1376264, 1048576, 6, 1376263, 1048576, 6, 2490368, 1048576, 6, 2883642, 1048576, 6, 2687043, 1048576, 6, 2490443, 1048576, 6, 2293844, 1048576, 6, 2031709, 1048576, 6, 1704037, 1048576, 6, 1507437, 1048576, 6, 1507438, 1048576, 6, 1507439, 1048576, 6, 1507440, 1048576, 6, 1507441, 1048576, 6, 1507442, 1048576, 6, 1507443, 1048576, 6, 1507444, 1048576, 6, 1507445, 1048576, 6, 1507446, 1048576, 6, 1507447, 1048576, 6, 1507448, 1048576, 6, 1507449, 1048576, 6, 917640, 1048576, 6, 983176, 1048576, 6, 1048712, 1048576, 6, 1114248, 1048576, 6, 1179784, 1048576, 6, 1245320, 1048576, 6, 1310856, 1048576, 6, 1376392, 1048576, 6, 1441928, 1048576, 6, 1507464, 1048576, 6, 1573000, 1048576, 6, 1638536, 1048576, 6, 1704072, 1048576, 6, 1769608, 1048576, 6, 1835144, 1048576, 6, 1900680, 1048576, 6, 1966216, 1048576, 6, 2031752, 1048576, 6, 2097288, 1048576, 6, 2162824, 1048576, 6, 2228353, 1048576, 6, 3014777, 1048576, 6, 3276932, 1048576, 6, 3145870, 1048576, 6, 2949271, 1048576, 6, 2752671, 1048576, 6, 2490534, 1048576, 6, 2293932, 1048576, 6, 2555918, 1048576, 6, 2490396, 1048576, 6, 2752554, 1048576, 6)
+
+[node name="Killbox" type="Area2D" parent="."]
+position = Vector2(70, 24)
+script = ExtResource("7_suuy6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(1399, 1041)
+shape = SubResource("RectangleShape2D_l3tli")
+
+[node name="PlatEdgeLeft" type="Area2D" parent="."]
+position = Vector2(38, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatEdgeLeft"]
+position = Vector2(855, 655)
+shape = SubResource("RectangleShape2D_25cet")
+
+[node name="PlatEdgeRight" type="Area2D" parent="."]
+position = Vector2(42, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatEdgeRight"]
+position = Vector2(928, 640)
+shape = SubResource("RectangleShape2D_0m736")
+
+[node name="PlatEdgeLeft2" type="Area2D" parent="."]
+position = Vector2(38, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatEdgeLeft2"]
+position = Vector2(1676, 311)
+shape = SubResource("RectangleShape2D_25cet")
+
+[node name="PlatEdgeRight2" type="Area2D" parent="."]
+position = Vector2(42, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatEdgeRight2"]
+position = Vector2(1937, 307)
+shape = SubResource("RectangleShape2D_0m736")
+
+[connection signal="body_entered" from="Exit_to_3" to="Exit_to_3" method="_on_body_entered"]
+[connection signal="body_entered" from="Killbox" to="Killbox" method="_on_body_entered"]
+[connection signal="body_entered" from="PlatEdgeLeft" to="Enemy_container/Red_slime" method="_on_plat_edge_left_body_entered"]
+[connection signal="body_entered" from="PlatEdgeRight" to="Enemy_container/Red_slime" method="_on_plat_edge_right_body_entered"]
+[connection signal="body_entered" from="PlatEdgeLeft2" to="Enemy_container/Blue_slime" method="_on_plat_edge_left_2_body_entered"]
+[connection signal="body_entered" from="PlatEdgeRight2" to="Enemy_container/Blue_slime" method="_on_plat_edge_right_2_body_entered"]

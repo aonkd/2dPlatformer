@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqxa6i7pmndjm"]
+
+[ext_resource type="Script" path="res://Levels/Game_Over.gd" id="1_cf27m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ad8kk"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cf27m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -69.0
+offset_top = 143.0
+offset_right = 1222.0
+offset_bottom = 490.0
+
+[node name="nice" type="Label" parent="."]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 182.0
+offset_right = 690.0
+offset_bottom = 268.0
+text = "Nice job!"
+label_settings = SubResource("LabelSettings_ad8kk")
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.012
+offset_left = 488.0
+offset_top = 283.0
+offset_right = 647.0
+offset_bottom = 328.224
+text = "Restart
+"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.012
+offset_left = 487.0
+offset_top = 352.0
+offset_right = 646.0
+offset_bottom = 397.224
+text = "Quit"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

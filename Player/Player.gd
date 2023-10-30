@@ -33,5 +33,18 @@ func _physics_process(delta):
 			$Sprite.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
 	move_and_slide()
+
+func _on_player_area_body_entered(body):
+	if body.name == "Green_slime":
+		self.die()
+	if body.name == "Blue_slime":
+		self.die()
+	if body.name == "Red_slime":
+		self.die()
+
+func die():
+	queue_free()
+
+
